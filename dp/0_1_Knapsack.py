@@ -4,11 +4,11 @@ def main():
     weights = [1, 3, 4, 5]
     values = [1, 4, 5, 7]
     capacity = 7
-    result = knapsack(capacity, weights, values, len(weights))
-    print(result)
+    result_simple = knapsack_simple(capacity, weights, values, len(weights))
+    print(result_simple)
 
 
-def knapsack(W, wt, val, n):
+def knapsack_simple(W, wt, val, n):
     dp = [[-1 for j in range(W + 1)] for i in range(n + 1)]
 
     # Be careful about i, j
@@ -26,10 +26,18 @@ def knapsack(W, wt, val, n):
             else:
                 dp[i][j] = max(
                     dp[i - 1][j],
-                    val[i - 1] + dp[i][j - wt[i - 1]]
+                    val[i - 1] + dp[i - 1][j - wt[i - 1]]
                 )
     print(dp)
     return dp[n][W]
+
+
+def knapsack_optimized(W, wt, val, n):
+    return
+
+
+def knapsack_recursive(W, wt, val, n):
+    return
 
 
 if __name__ == "__main__":
