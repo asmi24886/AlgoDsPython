@@ -10,15 +10,15 @@ def subset_sum(values, final_value):
                 dp[dp_i][dp_j] = dp[dp_i - 1][dp_j]
                 continue
 
-            dp[dp_i][dp_j] = dp[dp_i - 1][dp_j] or dp[dp_i-1][dp_j - values[dp_i - 1]]
+            dp[dp_i][dp_j] = dp[dp_i - 1][dp_j] or dp[dp_i - 1][dp_j - values[dp_i - 1]]
 
-    for row in dp:
-        print(row)
+    # for row in dp:
+    #     print(row)
 
     return dp[-1][-1]
 
 
-print(f"Subset sum present: {subset_sum([2, 3, 7, 8, 10, 11], 11)}")
-print(f"Subset sum present: {subset_sum([2, 3], 4)}")
-print(f"Subset sum present: {subset_sum([], 4)}")
-print(f"Subset sum present: {subset_sum([4], 4)}")
+assert subset_sum([2, 3, 7, 8, 10, 11], 11) == True
+assert subset_sum([2, 3], 4) == False
+assert subset_sum([], 4) == False
+assert subset_sum([4], 4) == True
